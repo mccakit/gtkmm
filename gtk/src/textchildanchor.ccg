@@ -13,29 +13,24 @@
  * You should have received a copy of the GNU Lesser General Public
  * License along with this library; if not, see <https://www.gnu.org/licenses/>.
  */
-
 #include <glibmm/vectorutils.h>
-
 #include <gtk/gtk.h>
-
 namespace Gtk
 {
-
 std::vector<Widget*> TextChildAnchor::get_widgets()
 {
   guint len = 0;
   GtkWidget** widgets = gtk_text_child_anchor_get_widgets(gobj(), &len);
   return Glib::ArrayHandler<Widget*>::array_to_vector(
-    reinterpret_cast<Widget**>(widgets), len, Glib::OWNERSHIP_SHALLOW);
+    widgets, len, Glib::OWNERSHIP_SHALLOW);
 }
 
-std::vector<Widget*> TextChildAnchor::get_widgets() const
+std::vector<const Widget*> TextChildAnchor::get_widgets() const
 {
   guint len = 0;
   GtkWidget** widgets = gtk_text_child_anchor_get_widgets(
     const_cast<GtkTextChildAnchor*>(gobj()), &len);
   return Glib::ArrayHandler<const Widget*>::array_to_vector(
-    reinterpret_cast<Widget**>(widgets), len, Glib::OWNERSHIP_SHALLOW);
+    widgets, len, Glib::OWNERSHIP_SHALLOW);
 }
-
 } // namespace Gtk
