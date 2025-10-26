@@ -29,7 +29,7 @@ std::vector<Widget*> TextChildAnchor::get_widgets()
     reinterpret_cast<Widget**>(widgets), len, Glib::OWNERSHIP_SHALLOW);
 }
 
-std::vector<const Widget*> TextChildAnchor::get_widgets() const
+std::vector<Widget*> TextChildAnchor::get_widgets() const
 {
   guint len = 0;
   GtkWidget** widgets = gtk_text_child_anchor_get_widgets(
